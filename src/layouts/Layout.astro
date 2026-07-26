@@ -8,8 +8,8 @@ const { title, description = "La Paradoja es un thriller psicológico de alto vo
 
 // Configuración de SEO y URLs Absolutas
 const siteUrl = "https://tebeitos.github.io/francisco-lopez-escritor"; // Cambiar por dominio propio si se adquiere uno
-const canonicalURL = new URL(Astro.url.pathname, siteUrl);
-const socialImageURL = new URL('/portada.jpg', siteUrl);
+const canonicalURL = `${siteUrl}${Astro.url.pathname}`;
+const socialImageURL = `${siteUrl}/portada.jpg`;
 
 // Datos estructurados en formato JSON-LD (Schema.org)
 const schemaData = {
@@ -24,7 +24,7 @@ const schemaData = {
       "author": {
         "@id": `${siteUrl}/#author`
       },
-      "image": socialImageURL.toString(),
+      "image": socialImageURL,
       "publisher": {
         "@type": "Organization",
         "name": "Letras del Alma Ediciones"

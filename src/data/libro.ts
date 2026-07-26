@@ -5,7 +5,7 @@ export const libro = {
   edicion: "2ª Edición",
   editorial: "Letras del Alma Ediciones",
   genero: "Novela negra / Thriller psicológico",
-  enlaceCompra: "https://www.amazon.es/dp/8409772949?tag=tebeitos-21",
+  enlaceCompra: "https://www.amazon.es/Paradoja-%C2%ABthriller%C2%BB-psicol%C3%B3gico-alto-voltaje-ebook/dp/B0G5ZLNPX7?ref_=ast_author_mpb",
 };
 
 export const autor = {

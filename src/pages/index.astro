@@ -1,0 +1,710 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { libro, autor } from '../data/libro';
+---
+
+<Layout 
+	title={`${libro.titulo} - ${libro.autor} | Novela Negra`}
+	description={`${libro.titulo}: ${libro.subtitulo}. Novela por ${libro.autor}. ${libro.edicion} publicada por ${libro.editorial}.`}
+>
+	<!-- Hero Section -->
+	<section class="hero-section" id="inicio">
+		<div class="hero-container">
+			<div class="hero-cover-container">
+				<div class="book-cover-wrapper">
+					<img src="/portada.jpg" alt={`Portada de ${libro.titulo}`} class="book-cover-img" />
+					<div class="book-cover-glow"></div>
+				</div>
+			</div>
+			
+			<div class="hero-info">
+				<div class="edition-tag">
+					<span class="edition-seal">
+						{libro.edicion}
+					</span>
+				</div>
+				<h1 class="hero-title">{libro.titulo}</h1>
+				<p class="hero-subtitle">{libro.subtitulo}</p>
+				<p class="hero-author">Una novela de <strong>{libro.autor}</strong></p>
+				
+				<div class="hero-actions">
+					<a href={libro.enlaceCompra} target="_blank" rel="noopener noreferrer" class="primary-btn">
+						Comprar en Amazon
+					</a>
+					<p class="affiliate-disclosure">
+						eBook y tapa blanda · Enlace de afiliado — puede generar una pequeña comisión sin coste adicional para ti
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Subtle Labyrinth Divider -->
+	<div class="subtle-divider">
+		<div class="divider-line"></div>
+		<div class="divider-icon">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+				<circle cx="12" cy="12" r="10" />
+				<circle cx="12" cy="12" r="6" />
+				<circle cx="12" cy="12" r="2" />
+			</svg>
+		</div>
+		<div class="divider-line"></div>
+	</div>
+
+	<!-- Sinopsis Section -->
+	<section class="sinopsis-section" id="libro">
+		<div class="section-container">
+			<h2 class="section-title">Sinopsis</h2>
+			
+			<div class="sinopsis-content">
+				<div class="sinopsis-text-block">
+					<p class="dropcap-paragraph">
+						Una llamada inesperada a mitad de la noche. Una investigación policial que, desde el primer instante, parece nacer torcida. Lo que comienza como un caso rutinario pronto se enreda en una red invisible de pistas imposibles de descifrar, donde cada hallazgo contradice el anterior.
+					</p>
+					<p>
+						A medida que el inspector Álvaro Ayala avanza en las pesquisas, la realidad comienza a agrietarse. Recuerdos fragmentados que no encajan en el rompecabezas, testimonios contradictorios y una inquietante sensación de que alguien controla las piezas desde las sombras. 
+					</p>
+					<p>
+						En este laberinto psicológico de alto voltaje, la línea que separa la realidad de la percepción se difumina por completo. ¿Hasta qué punto se puede confiar en lo que vemos... o en lo que recordamos?
+					</p>
+					
+					<blockquote class="atmospheric-quote">
+						"Cuando entras en el laberinto, la salida deja de ser una dirección y se convierte en una obsesión."
+					</blockquote>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section: Un universo por descubrir -->
+	<section class="universe-section">
+		<div class="universe-bg-glow"></div>
+		<div class="section-container">
+			<div class="universe-card">
+				<span class="card-subtitle">Álvaro Ayala #1</span>
+				<h2 class="card-title">Un universo por descubrir</h2>
+				<p class="card-text">
+					<em>{libro.titulo}</em> no es solo una historia autoconclusiva; es la puerta de entrada a un ambicioso y oscuro universo literario de suspense y misterio policíaco. Esta novela marca el nacimiento y debut literario del inspector <strong>Álvaro Ayala</strong>, un protagonista atormentado e inteligente que se verá obligado a enfrentarse a los laberintos más complejos de la mente y la realidad en futuros casos.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Sobre el autor Section -->
+	<section class="author-section" id="autor">
+		<div class="section-container">
+			<div class="author-layout">
+				<div class="author-visual">
+					<div class="author-portrait-container">
+						<img src="/autor.jpg" alt={`Fotografía de ${autor.nombre}`} class="author-portrait-img" />
+						<div class="portrait-glow"></div>
+					</div>
+				</div>
+				
+				<div class="author-text">
+					<span class="section-subtitle">El Autor</span>
+					<h2 class="section-title">{autor.nombre}</h2>
+					<div class="author-bio-content">
+						<p>{autor.bio}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Dónde comprarlo Section -->
+	<section class="purchase-section">
+		<div class="section-container purchase-container">
+			<h2 class="section-title">¿Listo para adentrarte en el laberinto?</h2>
+			<p class="purchase-description">
+				Consigue ya tu ejemplar de <strong>{libro.titulo}</strong>. Disponible en formato digital e impreso para que disfrutes de la lectura en tu formato preferido.
+			</p>
+			<div class="purchase-actions">
+				<a href={libro.enlaceCompra} target="_blank" rel="noopener noreferrer" class="large-buy-btn">
+					<span class="btn-primary-text">Comprar en Amazon</span>
+					<span class="btn-secondary-text">Disponible en eBook Kindle y Tapa Blanda</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Sígueme / Contacto Section -->
+	<section class="contact-section">
+		<div class="section-container contact-container">
+			<h2 class="section-title">Contacto y Redes</h2>
+			<p class="contact-text">
+				Sigue de cerca las novedades de Álvaro Ayala y futuras publicaciones compartiendo el día a día con el autor.
+			</p>
+			<a href={autor.instagram} target="_blank" rel="noopener noreferrer" class="instagram-button">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ig-icon">
+					<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+					<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+					<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+				</svg>
+				<span>@franciscomlopez.escritor</span>
+			</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	/* Hero Section */
+	.hero-section {
+		padding: 6rem 2rem 8rem;
+		min-height: 80vh;
+		display: flex;
+		align-items: center;
+	}
+
+	.hero-container {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 0.9fr 1.1fr;
+		gap: 6rem;
+		align-items: center;
+	}
+
+	.hero-info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.edition-tag {
+		margin-bottom: 1.5rem;
+	}
+
+	.edition-seal {
+		display: inline-flex;
+		align-items: center;
+		font-family: var(--font-title);
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--color-accent);
+		border: 1px solid rgba(196, 184, 150, 0.3);
+		padding: 0.4rem 1.2rem;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		background: rgba(27, 58, 75, 0.2);
+	}
+
+	.hero-title {
+		font-size: clamp(3.5rem, 6vw, 5.2rem);
+		font-weight: 500;
+		line-height: 1.05;
+		margin-bottom: 1rem;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+	}
+
+	.hero-subtitle {
+		font-family: var(--font-title);
+		font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+		font-style: italic;
+		color: var(--color-accent);
+		margin-bottom: 2rem;
+		line-height: 1.3;
+		font-weight: 300;
+		border-left: 2px solid var(--color-accent);
+		padding-left: 1.5rem;
+	}
+
+	.hero-author {
+		font-size: 1.15rem;
+		margin-bottom: 3rem;
+		color: var(--color-text-muted);
+	}
+
+	.hero-author strong {
+		color: var(--color-text);
+		font-family: var(--font-title);
+		font-size: 1.3rem;
+		font-weight: 500;
+		letter-spacing: 0.03em;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 480px;
+	}
+
+	.primary-btn {
+		font-family: var(--font-title);
+		font-size: 1.15rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--color-bg);
+		background-color: var(--color-accent);
+		padding: 1.1rem 2.2rem;
+		border: 1px solid var(--color-accent);
+		text-align: center;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+		transition: all 0.3s ease;
+	}
+
+	.primary-btn:hover {
+		background-color: transparent;
+		color: var(--color-accent);
+		box-shadow: 0 4px 25px rgba(196, 184, 150, 0.2);
+		transform: translateY(-2px);
+	}
+
+	.affiliate-disclosure {
+		font-size: 0.75rem;
+		color: rgba(242, 239, 233, 0.45);
+		line-height: 1.4;
+		margin-bottom: 0;
+	}
+
+	/* Hero Cover layout */
+	.hero-cover-container {
+		display: flex;
+		justify-content: center;
+	}
+
+	.book-cover-wrapper {
+		width: 100%;
+		max-width: 330px;
+		position: relative;
+		display: inline-block;
+	}
+
+	.book-cover-img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+		border-radius: 4px;
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5);
+		position: relative;
+		z-index: 2;
+	}
+
+	.book-cover-glow {
+		position: absolute;
+		top: 5%;
+		left: 5%;
+		right: 5%;
+		bottom: 5%;
+		background-color: var(--color-surface);
+		filter: blur(40px);
+		opacity: 0.4;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	/* Divider */
+	.subtle-divider {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+		opacity: 0.2;
+		padding: 0 2rem;
+	}
+
+	.divider-line {
+		flex: 1;
+		height: 1px;
+		background: linear-gradient(to right, transparent, var(--color-accent), transparent);
+	}
+
+	.divider-icon {
+		color: var(--color-accent);
+	}
+
+	/* Section Settings */
+	.section-container {
+		max-width: 800px; /* Generous text margins for reading */
+		margin: 0 auto;
+		padding: 8rem 2rem;
+	}
+
+	.section-title {
+		font-size: clamp(2.2rem, 4vw, 3.2rem);
+		font-weight: 500;
+		margin-bottom: 4rem;
+		letter-spacing: 0.05em;
+		text-align: center;
+		position: relative;
+	}
+
+	.section-title::after {
+		content: "";
+		position: absolute;
+		bottom: -1rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 50px;
+		height: 1px;
+		background-color: var(--color-accent);
+	}
+
+	/* Sinopsis Section */
+	.sinopsis-content {
+		line-height: 1.9;
+	}
+
+	.sinopsis-text-block p {
+		font-size: 1.15rem;
+		margin-bottom: 2rem;
+		text-align: justify;
+	}
+
+	.dropcap-paragraph::first-letter {
+		font-family: var(--font-title);
+		font-size: 4rem;
+		float: left;
+		line-height: 0.9;
+		margin-right: 0.8rem;
+		margin-top: 0.2rem;
+		color: var(--color-accent);
+		font-weight: 600;
+	}
+
+	.atmospheric-quote {
+		font-family: var(--font-title);
+		font-size: 1.65rem;
+		font-style: italic;
+		color: var(--color-accent);
+		border-left: 2px solid var(--color-accent);
+		padding: 0.5rem 0 0.5rem 2rem;
+		margin: 4rem 0 2rem;
+		line-height: 1.45;
+	}
+
+	/* Universe Section */
+	.universe-section {
+		position: relative;
+		overflow: hidden;
+		background-color: rgba(27, 58, 75, 0.12);
+		border-top: 1px solid rgba(196, 184, 150, 0.05);
+		border-bottom: 1px solid rgba(196, 184, 150, 0.05);
+	}
+
+	.universe-bg-glow {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 80%;
+		height: 80%;
+		background: radial-gradient(circle, rgba(27, 58, 75, 0.2) 0%, transparent 70%);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.universe-section .section-container {
+		position: relative;
+		z-index: 2;
+		padding: 7rem 2rem;
+	}
+
+	.universe-card {
+		text-align: center;
+		max-width: 680px;
+		margin: 0 auto;
+	}
+
+	.card-subtitle {
+		font-family: var(--font-title);
+		font-size: 1rem;
+		letter-spacing: 0.25em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+		display: block;
+		margin-bottom: 1rem;
+	}
+
+	.card-title {
+		font-family: var(--font-title);
+		font-size: clamp(2rem, 3.5vw, 2.8rem);
+		font-weight: 500;
+		margin-bottom: 2rem;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	.card-text {
+		font-size: 1.15rem;
+		line-height: 1.95;
+		color: var(--color-text-muted);
+	}
+
+	/* Author Section */
+	.author-section {
+		border-bottom: 1px solid rgba(196, 184, 150, 0.05);
+	}
+
+	.author-section .section-container {
+		max-width: var(--max-width);
+		padding: 8rem 2rem;
+	}
+
+	.author-layout {
+		display: grid;
+		grid-template-columns: 0.8fr 1.2fr;
+		gap: 6rem;
+		align-items: center;
+	}
+
+	.author-visual {
+		display: flex;
+		justify-content: center;
+	}
+
+	.author-portrait-container {
+		width: 250px;
+		height: 250px;
+		position: relative;
+	}
+
+	.author-portrait-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+		border: 2px solid var(--color-accent);
+		position: relative;
+		z-index: 2;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+	}
+
+	.portrait-glow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-radius: 50%;
+		background-color: var(--color-accent);
+		filter: blur(25px);
+		opacity: 0.2;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.author-text {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.section-subtitle {
+		font-family: var(--font-title);
+		font-size: 1.05rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+		margin-bottom: 0.5rem;
+	}
+
+	.author-text .section-title {
+		text-align: left;
+		margin-bottom: 2.5rem;
+	}
+
+	.author-text .section-title::after {
+		left: 0;
+		transform: none;
+	}
+
+	.author-bio-content p {
+		font-size: 1.125rem;
+		line-height: 1.85;
+	}
+
+	/* Purchase Section */
+	.purchase-section {
+		background-color: var(--color-surface);
+		border-top: 1px solid rgba(196, 184, 150, 0.1);
+		border-bottom: 1px solid rgba(196, 184, 150, 0.1);
+		text-align: center;
+	}
+
+	.purchase-container {
+		padding: 7rem 2rem;
+	}
+
+	.purchase-description {
+		font-size: 1.2rem;
+		color: var(--color-text-muted);
+		max-width: 600px;
+		margin: 0 auto 3rem;
+		line-height: 1.8;
+	}
+
+	.purchase-actions {
+		display: flex;
+		justify-content: center;
+	}
+
+	.large-buy-btn {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--color-accent);
+		border: 1px solid var(--color-accent);
+		padding: 1.4rem 3.5rem;
+		transition: all 0.3s ease;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+		text-decoration: none;
+		max-width: 500px;
+		width: 100%;
+	}
+
+	.large-buy-btn:hover {
+		background-color: transparent;
+		box-shadow: 0 15px 35px rgba(196, 184, 150, 0.15);
+		transform: translateY(-3px);
+	}
+
+	.btn-primary-text {
+		font-family: var(--font-title);
+		font-size: 1.4rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--color-bg);
+		line-height: 1.2;
+		transition: color 0.3s ease;
+	}
+
+	.large-buy-btn:hover .btn-primary-text {
+		color: var(--color-accent);
+	}
+
+	.btn-secondary-text {
+		font-size: 0.85rem;
+		color: rgba(13, 27, 36, 0.7);
+		margin-top: 0.3rem;
+		letter-spacing: 0.05em;
+		transition: color 0.3s ease;
+	}
+
+	.large-buy-btn:hover .btn-secondary-text {
+		color: var(--color-text-muted);
+	}
+
+	/* Contact Section */
+	.contact-section {
+		text-align: center;
+	}
+
+	.contact-container {
+		padding: 7rem 2rem;
+	}
+
+	.contact-text {
+		font-size: 1.15rem;
+		max-width: 500px;
+		margin: 0 auto 2.5rem;
+	}
+
+	.instagram-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.8rem;
+		font-family: var(--font-title);
+		font-size: 1.25rem;
+		color: var(--color-accent);
+		border: 1px solid rgba(196, 184, 150, 0.3);
+		padding: 0.9rem 2.2rem;
+		background-color: rgba(27, 58, 75, 0.15);
+		transition: all 0.3s ease;
+		letter-spacing: 0.05em;
+	}
+
+	.instagram-button:hover {
+		background-color: var(--color-accent);
+		color: var(--color-bg);
+		border-color: var(--color-accent);
+		box-shadow: 0 5px 20px rgba(196, 184, 150, 0.2);
+	}
+
+	.ig-icon {
+		transition: stroke 0.3s ease;
+	}
+
+	/* Responsive Settings */
+	@media (max-width: 1024px) {
+		.hero-container {
+			gap: 4rem;
+		}
+
+		.author-layout {
+			grid-template-columns: 1fr;
+			gap: 4rem;
+			text-align: center;
+		}
+
+		.author-portrait-container {
+			margin: 0 auto;
+		}
+
+		.author-text .section-title {
+			text-align: center;
+		}
+
+		.author-text .section-title::after {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero-section {
+			padding: 4rem 1rem 6rem;
+		}
+
+		.hero-container {
+			grid-template-columns: 1fr;
+			text-align: center;
+			gap: 3.5rem;
+		}
+
+		.hero-subtitle {
+			border-left: none;
+			border-top: 1px solid rgba(196, 184, 150, 0.3);
+			border-bottom: 1px solid rgba(196, 184, 150, 0.3);
+			padding: 1.2rem 0;
+			text-align: center;
+		}
+
+		.hero-cover-container {
+			order: -1; /* Cover goes on top */
+		}
+
+		.book-cover-wrapper {
+			max-width: 250px;
+		}
+
+		.hero-actions {
+			margin: 0 auto;
+			width: 100%;
+		}
+
+		.section-container {
+			padding: 5rem 1.5rem;
+		}
+
+		.universe-section .section-container {
+			padding: 5rem 1.5rem;
+		}
+
+		.sinopsis-text-block p {
+			text-align: left;
+		}
+
+		.large-buy-btn {
+			padding: 1.2rem 2rem;
+		}
+	}
+</style>

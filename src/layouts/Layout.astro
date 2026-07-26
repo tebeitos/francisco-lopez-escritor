@@ -1,0 +1,332 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "La Paradoja - Un thriller psicológico de Francisco M. López Martínez" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Google Fonts: Cormorant Garamond for titles, Lora for body -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+		
+		<title>{title}</title>
+	</head>
+	<body>
+		<!-- Soft background elements simulating mist and mysterious depth -->
+		<div class="mist-overlay"></div>
+		<div class="labyrinth-glow"></div>
+		
+		<header class="site-header">
+			<div class="header-content">
+				<a href="/" class="site-logo">
+					<span class="logo-main">LA PARADOJA</span>
+					<span class="logo-sub">Álvaro Ayala #1</span>
+				</a>
+				<nav class="site-nav">
+					<a href="#libro">El Libro</a>
+					<a href="#autor">El Autor</a>
+					<a href="https://www.amazon.es/dp/8409772949?tag=tebeitos-21" target="_blank" rel="noopener noreferrer" class="nav-buy-btn">Comprar</a>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-content">
+				<div class="footer-brand">
+					<p class="footer-title">LA PARADOJA</p>
+					<p class="footer-tagline">Un thriller psicológico de alto voltaje</p>
+				</div>
+				<p class="footer-copyright">
+					© {new Date().getFullYear()} Francisco M. López Martínez. Todos los derechos reservados.
+				</p>
+				<p class="footer-editorial">
+					Publicado por <span class="editorial-highlight">Letras del Alma Ediciones</span> • 2ª Edición
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--color-bg: #0D1B24;      /* Azul noche */
+		--color-surface: #1B3A4B; /* Azul petróleo */
+		--color-surface-rgb: 27, 58, 75;
+		--color-text: #F2EFE9;    /* Blanco hueso */
+		--color-text-muted: rgba(242, 239, 233, 0.7);
+		--color-accent: #C4B896;  /* Dorado apagado */
+		--color-accent-rgb: 196, 184, 150;
+		--color-accent-hover: #D7CDAF;
+		
+		--font-title: 'Cormorant Garamond', Georgia, serif;
+		--font-body: 'Lora', Georgia, serif;
+		
+		--max-width: 1100px;
+	}
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background-color: var(--color-bg);
+		color: var(--color-text);
+		font-family: var(--font-body);
+		line-height: 1.8;
+		font-size: 1.1rem;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		position: relative;
+		min-height: 100vh;
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Background ambient mist */
+	.mist-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: 
+			radial-gradient(circle 70vw at 50% -10%, rgba(27, 58, 75, 0.45) 0%, rgba(13, 27, 36, 0) 80%),
+			radial-gradient(circle 50vw at 80% 60%, rgba(27, 58, 75, 0.15) 0%, rgba(13, 27, 36, 0) 100%),
+			radial-gradient(circle 60vw at -10% 80%, rgba(27, 58, 75, 0.2) 0%, rgba(13, 27, 36, 0) 100%);
+		pointer-events: none;
+		z-index: -2;
+	}
+
+	/* Abstract representation of labyrinth patterns / shadows */
+	.labyrinth-glow {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: 
+			radial-gradient(circle at center, transparent 30%, rgba(13, 27, 36, 0.95) 90%),
+			repeating-radial-gradient(circle at center, rgba(196, 184, 150, 0.008) 0px, rgba(196, 184, 150, 0.008) 1px, transparent 1px, transparent 40px),
+			repeating-radial-gradient(circle at center, rgba(27, 58, 75, 0.02) 0px, rgba(27, 58, 75, 0.02) 2px, transparent 2px, transparent 80px);
+		pointer-events: none;
+		z-index: -1;
+		opacity: 0.85;
+	}
+
+	/* Typography & Headings */
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-title);
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		line-height: 1.2;
+		color: var(--color-text);
+	}
+
+	p {
+		margin-bottom: 1.5rem;
+		color: var(--color-text-muted);
+	}
+
+	a {
+		color: var(--color-accent);
+		text-decoration: none;
+		transition: color 0.3s ease, border-color 0.3s ease;
+	}
+
+	a:hover {
+		color: var(--color-accent-hover);
+	}
+
+	/* Header */
+	.site-header {
+		padding: 2rem 2rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+	}
+
+	.header-content {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.site-logo {
+		display: flex;
+		flex-direction: column;
+		letter-spacing: 0.15em;
+		text-decoration: none;
+	}
+
+	.logo-main {
+		font-family: var(--font-title);
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: var(--color-text);
+		line-height: 1;
+	}
+
+	.logo-sub {
+		font-size: 0.65rem;
+		font-weight: 500;
+		color: var(--color-accent);
+		margin-top: 0.3rem;
+		text-transform: uppercase;
+		opacity: 0.9;
+	}
+
+	.site-nav {
+		display: flex;
+		align-items: center;
+		gap: 2.5rem;
+	}
+
+	.site-nav a:not(.nav-buy-btn) {
+		font-family: var(--font-title);
+		font-size: 1.15rem;
+		color: var(--color-text);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		opacity: 0.8;
+		border-bottom: 1px solid transparent;
+		padding-bottom: 2px;
+	}
+
+	.site-nav a:not(.nav-buy-btn):hover {
+		opacity: 1;
+		border-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.nav-buy-btn {
+		font-family: var(--font-title);
+		font-size: 1.05rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-bg);
+		background-color: var(--color-accent);
+		padding: 0.6rem 1.8rem;
+		border: 1px solid var(--color-accent);
+		transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+	}
+
+	.nav-buy-btn:hover {
+		background-color: transparent;
+		color: var(--color-accent);
+	}
+
+	/* Main */
+	main {
+		flex: 1;
+		margin-top: 6rem;
+	}
+
+	/* Footer */
+	.site-footer {
+		padding: 5rem 2rem 4rem;
+		border-top: 1px solid rgba(196, 184, 150, 0.08);
+		background: linear-gradient(to bottom, transparent, rgba(13, 27, 36, 0.8));
+		text-align: center;
+	}
+
+	.footer-content {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.8rem;
+	}
+
+	.footer-brand {
+		margin-bottom: 0.5rem;
+	}
+
+	.footer-title {
+		font-family: var(--font-title);
+		font-size: 2.2rem;
+		color: var(--color-text);
+		letter-spacing: 0.12em;
+		margin-bottom: 0.3rem;
+		line-height: 1;
+	}
+
+	.footer-tagline {
+		font-family: var(--font-title);
+		font-size: 1.1rem;
+		font-style: italic;
+		color: var(--color-accent);
+		letter-spacing: 0.02em;
+	}
+
+	.footer-copyright {
+		font-size: 0.9rem;
+		color: rgba(242, 239, 233, 0.4);
+		margin-bottom: 0;
+	}
+
+	.footer-editorial {
+		font-size: 0.95rem;
+		color: rgba(242, 239, 233, 0.6);
+		letter-spacing: 0.03em;
+		margin-bottom: 0;
+	}
+
+	.editorial-highlight {
+		color: var(--color-text);
+		font-weight: 500;
+	}
+
+	/* Responsive design settings */
+	@media (max-width: 768px) {
+		.site-header {
+			padding: 1.5rem 1rem;
+		}
+		
+		.header-content {
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.site-nav {
+			gap: 1.5rem;
+		}
+
+		main {
+			margin-top: 9rem;
+		}
+		
+		.footer-title {
+			font-size: 1.8rem;
+		}
+	}
+</style>

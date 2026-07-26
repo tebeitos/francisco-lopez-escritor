@@ -31,17 +31,38 @@ const { title, description = "La Paradoja - Un thriller psicológico de Francisc
 		
 		<header class="site-header">
 			<div class="header-content">
+				<!-- Botón de menú hamburguesa (solo visible en móvil) -->
+				<button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+					<span class="hamburger-bar"></span>
+					<span class="hamburger-bar"></span>
+					<span class="hamburger-bar"></span>
+				</button>
+
 				<a href="/" class="site-logo">
 					<span class="logo-main">LA PARADOJA</span>
 					<span class="logo-sub">Álvaro Ayala #1</span>
 				</a>
+
+				<!-- Menú de navegación de escritorio -->
 				<nav class="site-nav">
 					<a href="#libro">El Libro</a>
 					<a href="#autor">El Autor</a>
 					<a href="https://www.amazon.es/dp/8409772949?tag=tebeitos-21" target="_blank" rel="noopener noreferrer" class="nav-buy-btn">Comprar</a>
 				</nav>
+
+				<!-- Espaciador simétrico en móvil para centrar el logotipo -->
+				<div class="header-right-spacer"></div>
 			</div>
 		</header>
+
+		<!-- Menú desplegable móvil -->
+		<div class="mobile-menu-overlay" id="mobileMenu">
+			<nav class="mobile-nav">
+				<a href="#libro" class="mobile-nav-link">El Libro</a>
+				<a href="#autor" class="mobile-nav-link">El Autor</a>
+				<a href="https://www.amazon.es/dp/8409772949?tag=tebeitos-21" target="_blank" rel="noopener noreferrer" class="mobile-buy-btn">Comprar en Amazon</a>
+			</nav>
+		</div>
 
 		<main>
 			<slot />
@@ -63,6 +84,32 @@ const { title, description = "La Paradoja - Un thriller psicológico de Francisc
 		</footer>
 	</body>
 </html>
+
+<script>
+	const menuToggle = document.getElementById('menuToggle');
+	const mobileMenu = document.getElementById('mobileMenu');
+	const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-buy-btn');
+
+	if (menuToggle && mobileMenu) {
+		const toggleMenu = () => {
+			const isActive = menuToggle.classList.toggle('active');
+			mobileMenu.classList.toggle('active', isActive);
+			// Evita scroll en la página detrás del menú abierto
+			document.body.style.overflow = isActive ? 'hidden' : '';
+		};
+
+		menuToggle.addEventListener('click', toggleMenu);
+
+		// Cierra el menú al hacer clic en cualquier enlace
+		mobileLinks.forEach(link => {
+			link.addEventListener('click', () => {
+				menuToggle.classList.remove('active');
+				mobileMenu.classList.remove('active');
+				document.body.style.overflow = '';
+			});
+		});
+	}
+</script>
 
 <style is:global>
 	:root {
@@ -168,7 +215,7 @@ const { title, description = "La Paradoja - Un thriller psicológico de Francisc
 		top: 0;
 		left: 0;
 		right: 0;
-		z-index: 10;
+		z-index: 95;
 	}
 
 	.header-content {
@@ -184,6 +231,7 @@ const { title, description = "La Paradoja - Un thriller psicológico de Francisc
 		flex-direction: column;
 		letter-spacing: 0.15em;
 		text-decoration: none;
+		z-index: 100;
 	}
 
 	.logo-main {
@@ -240,6 +288,121 @@ const { title, description = "La Paradoja - Un thriller psicológico de Francisc
 	}
 
 	.nav-buy-btn:hover {
+		background-color: transparent;
+		color: var(--color-accent);
+	}
+
+	/* Hamburger Toggle Button */
+	.menu-toggle {
+		display: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 10px;
+		z-index: 100;
+		flex-direction: column;
+		gap: 6px;
+		width: 44px;
+		height: 44px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.hamburger-bar {
+		display: block;
+		width: 24px;
+		height: 2px;
+		background-color: var(--color-text);
+		transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+	}
+
+	.menu-toggle.active .hamburger-bar:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+		background-color: var(--color-accent);
+	}
+
+	.menu-toggle.active .hamburger-bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.menu-toggle.active .hamburger-bar:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+		background-color: var(--color-accent);
+	}
+
+	/* Espaciador para centrar el logo en móvil */
+	.header-right-spacer {
+		display: none;
+	}
+
+	/* Menú desplegable móvil */
+	.mobile-menu-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(13, 27, 36, 0.98);
+		backdrop-filter: blur(12px);
+		z-index: 90;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.mobile-menu-overlay.active {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.mobile-nav {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2.2rem;
+		width: 80%;
+		max-width: 320px;
+		transform: translateY(-30px);
+		transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.mobile-menu-overlay.active .mobile-nav {
+		transform: translateY(0);
+	}
+
+	.mobile-nav-link {
+		font-family: var(--font-title);
+		font-size: 2.2rem;
+		color: var(--color-text);
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		transition: color 0.3s ease;
+	}
+
+	.mobile-nav-link:hover {
+		color: var(--color-accent);
+	}
+
+	.mobile-buy-btn {
+		font-family: var(--font-title);
+		font-size: 1.5rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--color-bg);
+		background-color: var(--color-accent);
+		padding: 0.8rem 2.2rem;
+		border: 1px solid var(--color-accent);
+		width: 100%;
+		text-align: center;
+		transition: all 0.3s ease;
+		margin-top: 1rem;
+	}
+
+	.mobile-buy-btn:hover {
 		background-color: transparent;
 		color: var(--color-accent);
 	}
@@ -309,20 +472,52 @@ const { title, description = "La Paradoja - Un thriller psicológico de Francisc
 	/* Responsive design settings */
 	@media (max-width: 768px) {
 		.site-header {
-			padding: 1.5rem 1rem;
+			padding: 1rem 1.5rem;
+			position: fixed;
+			background-color: rgba(13, 27, 36, 0.85);
+			backdrop-filter: blur(12px);
+			border-bottom: 1px solid rgba(196, 184, 150, 0.05);
+			z-index: 98;
 		}
 		
 		.header-content {
-			flex-direction: column;
-			gap: 1.5rem;
+			display: grid;
+			grid-template-columns: 44px 1fr 44px;
+			justify-items: center;
+			align-items: center;
+			width: 100%;
+		}
+
+		.site-logo {
+			align-items: center;
+		}
+
+		.logo-main {
+			font-size: 1.4rem;
+		}
+
+		.logo-sub {
+			font-size: 0.6rem;
 		}
 
 		.site-nav {
-			gap: 1.5rem;
+			display: none; /* Oculta navegación en escritorio */
+		}
+
+		.menu-toggle {
+			display: flex; /* Muestra el botón de menú */
+			grid-column: 1;
+			justify-self: start;
+		}
+
+		.header-right-spacer {
+			display: block;
+			width: 44px; /* Simula la anchura del botón de menú para equilibrar */
+			grid-column: 3;
 		}
 
 		main {
-			margin-top: 9rem;
+			margin-top: 5.5rem; /* Margen para compensar la cabecera fija */
 		}
 		
 		.footer-title {

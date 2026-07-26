@@ -4,25 +4,107 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "La Paradoja - Un thriller psicológico de Francisco M. López Martínez" } = Astro.props;
+const { title, description = "La Paradoja es un thriller psicológico de alto voltaje escrito por Francisco M. López Martínez. Descubre el nacimiento del inspector Álvaro Ayala. ¡Consigue tu ejemplar en Amazon!" } = Astro.props;
+
+// Configuración de SEO y URLs Absolutas
+const siteUrl = "https://tebeitos.github.io/francisco-lopez-escritor"; // Cambiar por dominio propio si se adquiere uno
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const socialImageURL = new URL('/portada.jpg', siteUrl);
+
+// Datos estructurados en formato JSON-LD (Schema.org)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Book",
+      "@id": `${siteUrl}/#book`,
+      "name": "La Paradoja",
+      "headline": "Un thriller psicológico de alto voltaje",
+      "description": "La Paradoja es una novela negra y thriller psicológico donde vas a dudar de cada pista, igual que Álvaro Ayala duda de su propia memoria.",
+      "author": {
+        "@id": `${siteUrl}/#author`
+      },
+      "image": socialImageURL.toString(),
+      "publisher": {
+        "@type": "Organization",
+        "name": "Letras del Alma Ediciones"
+      },
+      "bookEdition": "2ª Edición",
+      "genre": "Novela negra / Thriller psicológico",
+      "url": siteUrl,
+      "workExample": [
+        {
+          "@type": "Book",
+          "bookFormat": "https://schema.org/EBook",
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": "https://www.amazon.es/Paradoja-%C2%ABthriller%C2%BB-psicol%C3%B3gico-alto-voltaje-ebook/dp/B0G5ZLNPX7?ref_=ast_author_mpb"
+          }
+        },
+        {
+          "@type": "Book",
+          "bookFormat": "https://schema.org/Paperback",
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": "https://www.amazon.es/Paradoja-%C2%ABthriller%C2%BB-psicol%C3%B3gico-alto-voltaje-ebook/dp/B0G5ZLNPX7?ref_=ast_author_mpb"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#author`,
+      "name": "Francisco M. López Martínez",
+      "description": "Nacido en Gijón en 1980. Diplomado en Trabajo Social y apasionado de la novela policiaca y el thriller, creador del universo del inspector Álvaro Ayala.",
+      "sameAs": [
+        "https://instagram.com/franciscomlopez.escritor"
+      ]
+    }
+  ]
+};
+const schemaString = JSON.stringify(schemaData);
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="book" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:site_name" content="Francisco M. López Martínez" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImageURL} />
+
 		<!-- Google Fonts: Cormorant Garamond for titles, Lora for body -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 		
-		<title>{title}</title>
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json" set:html={schemaString}></script>
 	</head>
 	<body>
 		<!-- Soft background elements simulating mist and mysterious depth -->

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tebeitos.github.io/francisco-lopez-escritor/sitemap.xml

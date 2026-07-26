@@ -95,38 +95,7 @@ import { libro, autor } from '../data/libro';
 		</div>
 	</section>
 
-	<!-- Section: Este libro es para ti si... -->
-	<section class="for-you-section">
-		<div class="section-container">
-			<h2 class="section-title">Este libro es para ti si...</h2>
-			<ul class="checklist-items">
-				<li class="checklist-item">
-					<span class="checklist-icon">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<polyline points="20 6 9 17 4 12" />
-						</svg>
-					</span>
-					<p class="checklist-text">Te enganchan las historias donde el pasado de alguien pesa tanto como el crimen que investiga</p>
-				</li>
-				<li class="checklist-item">
-					<span class="checklist-icon">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<polyline points="20 6 9 17 4 12" />
-						</svg>
-					</span>
-					<p class="checklist-text">Te interesa lo que hay detrás de las personas — por qué actúan como actúan, qué cargan sin decirlo</p>
-				</li>
-				<li class="checklist-item">
-					<span class="checklist-icon">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<polyline points="20 6 9 17 4 12" />
-						</svg>
-					</span>
-					<p class="checklist-text">Buscas algo más que un caso policial: quieres una novela negra que también te remueva algo por dentro</p>
-				</li>
-			</ul>
-		</div>
-	</section>
+
 
 	<!-- Section: Un universo por descubrir -->
 	<section class="universe-section">
@@ -552,49 +521,13 @@ import { libro, autor } from '../data/libro';
 		font-style: italic;
 	}
 
-	/* For You Section */
-	.for-you-section {
-		border-top: 1px solid rgba(196, 184, 150, 0.05);
-		background-color: rgba(27, 58, 75, 0.06);
-	}
 
-	.checklist-items {
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-		gap: 0.9rem;
-		max-width: 680px;
-		margin: 0 auto;
-	}
-
-	.checklist-item {
-		display: flex;
-		align-items: flex-start;
-		gap: 1.2rem;
-	}
-
-	.checklist-icon {
-		color: var(--color-accent);
-		flex-shrink: 0;
-		margin-top: 0.15rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.checklist-text {
-		font-size: 1.15rem;
-		line-height: 1.75;
-		color: var(--color-text-muted);
-		margin-bottom: 0;
-	}
 
 	/* Universe Section */
 	.universe-section {
 		position: relative;
 		overflow: hidden;
 		background-color: rgba(27, 58, 75, 0.12);
-		border-top: 1px solid rgba(196, 184, 150, 0.05);
 		border-bottom: 1px solid rgba(196, 184, 150, 0.05);
 	}
 

@@ -74,6 +74,57 @@ import { libro, autor } from '../data/libro';
 		</div>
 	</section>
 
+	<!-- Section: ¿Por qué leer La Paradoja? -->
+	<section class="why-read-section">
+		<div class="section-container">
+			<h2 class="section-title">¿Por qué leer La Paradoja?</h2>
+			<div class="highlights-list">
+				<div class="highlight-item">
+					<p class="highlight-text">Porque vas a dudar de cada pista, igual que Álvaro Ayala duda de su propia memoria.</p>
+				</div>
+				<div class="highlight-item">
+					<p class="highlight-text">Porque cuando creas que ya lo has resuelto, la historia te va a demostrar que no.</p>
+				</div>
+				<div class="highlight-item">
+					<p class="highlight-text">Porque es de esas novelas que se leen en dos sentadas — y la segunda no la eliges tú, te la pide el libro.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section: Este libro es para ti si... -->
+	<section class="for-you-section">
+		<div class="section-container">
+			<h2 class="section-title">Este libro es para ti si...</h2>
+			<ul class="checklist-items">
+				<li class="checklist-item">
+					<span class="checklist-icon">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="20 6 9 17 4 12" />
+						</svg>
+					</span>
+					<p class="checklist-text">Te gustan las historias donde no puedes fiarte de nadie, ni siquiera del protagonista</p>
+				</li>
+				<li class="checklist-item">
+					<span class="checklist-icon">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="20 6 9 17 4 12" />
+						</svg>
+					</span>
+					<p class="checklist-text">Disfrutas con giros que te obligan a releer el capítulo anterior</p>
+				</li>
+				<li class="checklist-item">
+					<span class="checklist-icon">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="20 6 9 17 4 12" />
+						</svg>
+					</span>
+					<p class="checklist-text">Buscas algo más que un caso policial — quieres que también te remueva algo por dentro</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
 	<!-- Section: Un universo por descubrir -->
 	<section class="universe-section">
 		<div class="universe-bg-glow"></div>
@@ -113,9 +164,9 @@ import { libro, autor } from '../data/libro';
 	<!-- Dónde comprarlo Section -->
 	<section class="purchase-section">
 		<div class="section-container purchase-container">
-			<h2 class="section-title">¿Listo para adentrarte en el laberinto?</h2>
+			<h2 class="section-title">¿Te atreves a entrar?</h2>
 			<p class="purchase-description">
-				Consigue ya tu ejemplar de <strong>{libro.titulo}</strong>. Disponible en formato digital e impreso para que disfrutes de la lectura en tu formato preferido.
+				Si te gustan los libros que te hacen dudar de todo lo que acabas de leer, este es tuyo. Consigue tu ejemplar y descúbrelo tú mismo.
 			</p>
 			<div class="purchase-actions">
 				<a href={libro.enlaceCompra} target="_blank" rel="noopener noreferrer" class="large-buy-btn">
@@ -375,6 +426,81 @@ import { libro, autor } from '../data/libro';
 		padding: 0.5rem 0 0.5rem 2rem;
 		margin: 4rem 0 2rem;
 		line-height: 1.45;
+	}
+
+	/* Why Read Section */
+	.why-read-section {
+		border-top: 1px solid rgba(196, 184, 150, 0.05);
+		background-color: rgba(13, 27, 36, 0.3);
+	}
+
+	.highlights-list {
+		display: flex;
+		flex-direction: column;
+		gap: 2.2rem;
+		max-width: 680px;
+		margin: 0 auto;
+	}
+
+	.highlight-item {
+		position: relative;
+		padding-left: 2.2rem;
+	}
+
+	.highlight-item::before {
+		content: "—";
+		position: absolute;
+		left: 0;
+		color: var(--color-accent);
+		font-family: var(--font-title);
+		font-size: 1.6rem;
+		line-height: 1.1;
+	}
+
+	.highlight-text {
+		font-family: var(--font-title);
+		font-size: 1.45rem;
+		line-height: 1.65;
+		color: var(--color-text);
+		margin-bottom: 0;
+		font-style: italic;
+	}
+
+	/* For You Section */
+	.for-you-section {
+		border-top: 1px solid rgba(196, 184, 150, 0.05);
+		background-color: rgba(27, 58, 75, 0.06);
+	}
+
+	.checklist-items {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		max-width: 680px;
+		margin: 0 auto;
+	}
+
+	.checklist-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.2rem;
+	}
+
+	.checklist-icon {
+		color: var(--color-accent);
+		flex-shrink: 0;
+		margin-top: 0.15rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.checklist-text {
+		font-size: 1.15rem;
+		line-height: 1.75;
+		color: var(--color-text-muted);
+		margin-bottom: 0;
 	}
 
 	/* Universe Section */

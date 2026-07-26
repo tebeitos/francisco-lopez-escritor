@@ -165,41 +165,6 @@ import { libro, autor } from '../data/libro';
 			</div>
 		</div>
 	</section>
-
-	<!-- Dónde comprarlo Section -->
-	<section class="purchase-section">
-		<div class="section-container purchase-container">
-			<h2 class="section-title">¿Te atreves a entrar?</h2>
-			<p class="purchase-description">
-				Si te gustan los libros que te hacen dudar de todo lo que acabas de leer, este es tuyo. Consigue tu ejemplar y descúbrelo tú mismo.
-			</p>
-			<div class="purchase-actions">
-				<a href={libro.enlaceCompra} target="_blank" rel="noopener noreferrer" class="large-buy-btn">
-					<span class="btn-primary-text">Comprar en Amazon</span>
-					<span class="btn-secondary-text">Disponible en eBook Kindle y Tapa Blanda</span>
-				</a>
-			</div>
-		</div>
-	</section>
-
-	<!-- Sígueme / Contacto Section -->
-	<section class="contact-section">
-		<div class="section-container contact-container">
-			<h2 class="section-title">Contacto y Redes</h2>
-			<p class="contact-text">
-				Sigue de cerca las novedades de Álvaro Ayala y futuras publicaciones compartiendo el día a día con el autor.
-			</p>
-			<a href={autor.instagram} target="_blank" rel="noopener noreferrer" class="instagram-button">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ig-icon">
-					<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-					<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-					<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-				</svg>
-				<span>@franciscomlopez.escritor</span>
-			</a>
-		</div>
-	</section>
-
 	<!-- Newsletter Section -->
 	<section class="newsletter-section" id="newsletter">
 		<div class="section-container newsletter-container">
@@ -268,6 +233,24 @@ import { libro, autor } from '../data/libro';
 					</button>
 				</form>
 			</div>
+		</div>
+	</section>
+
+	<!-- Sígueme / Contacto Section -->
+	<section class="contact-section">
+		<div class="section-container contact-container">
+			<h2 class="section-title">Contacto y Redes</h2>
+			<p class="contact-text">
+				Sigue de cerca las novedades de Álvaro Ayala y futuras publicaciones compartiendo el día a día con el autor.
+			</p>
+			<a href={autor.instagram} target="_blank" rel="noopener noreferrer" class="instagram-button">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ig-icon">
+					<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+					<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+					<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+				</svg>
+				<span>@franciscomlopez.escritor</span>
+			</a>
 		</div>
 	</section>
 </Layout>
@@ -743,78 +726,7 @@ import { libro, autor } from '../data/libro';
 		line-height: 1.85;
 	}
 
-	/* Purchase Section */
-	.purchase-section {
-		background-color: var(--color-surface);
-		border-top: 1px solid rgba(196, 184, 150, 0.1);
-		border-bottom: 1px solid rgba(196, 184, 150, 0.1);
-		text-align: center;
-	}
 
-	.purchase-container {
-		padding: 3.5rem 2rem;
-	}
-
-	.purchase-description {
-		font-size: 1.2rem;
-		color: var(--color-text-muted);
-		max-width: 600px;
-		margin: 0 auto 1.5rem;
-		line-height: 1.8;
-	}
-
-	.purchase-actions {
-		display: flex;
-		justify-content: center;
-	}
-
-	.large-buy-btn {
-		display: inline-flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		background-color: var(--color-accent);
-		border: 1px solid var(--color-accent);
-		padding: 1.4rem 3.5rem;
-		transition: all 0.3s ease;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-		text-decoration: none;
-		max-width: 500px;
-		width: 100%;
-	}
-
-	.large-buy-btn:hover {
-		background-color: transparent;
-		box-shadow: 0 15px 35px rgba(196, 184, 150, 0.15);
-		transform: translateY(-3px);
-	}
-
-	.btn-primary-text {
-		font-family: var(--font-title);
-		font-size: 1.4rem;
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.15em;
-		color: var(--color-bg);
-		line-height: 1.2;
-		transition: color 0.3s ease;
-	}
-
-	.large-buy-btn:hover .btn-primary-text {
-		color: var(--color-accent);
-	}
-
-	.btn-secondary-text {
-		font-size: 0.85rem;
-		color: rgba(13, 27, 36, 0.7);
-		margin-top: 0.3rem;
-		letter-spacing: 0.05em;
-		transition: color 0.3s ease;
-	}
-
-	.large-buy-btn:hover .btn-secondary-text {
-		color: var(--color-text-muted);
-	}
 
 	/* Contact Section */
 	.contact-section {
@@ -948,8 +860,9 @@ import { libro, autor } from '../data/libro';
 
 	/* Newsletter Section */
 	.newsletter-section {
-		border-top: 1px solid rgba(196, 184, 150, 0.05);
-		background-color: rgba(13, 27, 36, 0.25);
+		background-color: var(--color-surface);
+		border-top: 1px solid rgba(196, 184, 150, 0.1);
+		border-bottom: 1px solid rgba(196, 184, 150, 0.1);
 		position: relative;
 	}
 

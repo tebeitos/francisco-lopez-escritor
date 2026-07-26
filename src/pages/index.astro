@@ -842,21 +842,7 @@ import { libro, autor } from '../data/libro';
 			padding: 1.2rem 2rem;
 		}
 
-		/* Mobile for dossier */
-		.form-row {
-			display: flex;
-			flex-direction: column;
-			gap: 1.2rem;
-		}
 
-		.dossier-card {
-			padding: 1.8rem 1.2rem;
-		}
-
-		.radio-options {
-			flex-direction: column;
-			gap: 0.8rem;
-		}
 	}
 
 	/* Newsletter Section */
@@ -887,7 +873,7 @@ import { libro, autor } from '../data/libro';
 		background-color: #11212B; /* Lighter night blue */
 		border: 1px solid rgba(196, 184, 150, 0.15);
 		border-left: 4px solid var(--color-accent);
-		padding: 2.5rem 2.5rem;
+		padding: 1.8rem 1.2rem; /* Mobile-first padding by default */
 		position: relative;
 		overflow: hidden;
 		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
@@ -920,9 +906,9 @@ import { libro, autor } from '../data/libro';
 	}
 
 	.form-row {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 1.8rem;
+		display: flex;
+		flex-direction: column; /* Mobile-first flex direction */
+		gap: 1.2rem;
 	}
 
 	.form-group {
@@ -981,7 +967,8 @@ import { libro, autor } from '../data/libro';
 
 	.radio-options {
 		display: flex;
-		gap: 3rem;
+		flex-direction: column; /* Mobile-first layout */
+		gap: 0.8rem;
 	}
 
 	.radio-label {
@@ -1097,6 +1084,24 @@ import { libro, autor } from '../data/libro';
 		font-weight: bold;
 		font-size: 1.25rem;
 		letter-spacing: 0.05em;
+	}
+
+	/* Desktop overrides for dossier card */
+	@media (min-width: 992px) {
+		.dossier-card {
+			padding: 2.5rem 2.5rem;
+		}
+
+		.form-row {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.8rem;
+		}
+
+		.radio-options {
+			flex-direction: row;
+			gap: 3rem;
+		}
 	}
 </style>
 

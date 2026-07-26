@@ -199,7 +199,102 @@ import { libro, autor } from '../data/libro';
 			</a>
 		</div>
 	</section>
+
+	<!-- Newsletter Section -->
+	<section class="newsletter-section" id="newsletter">
+		<div class="section-container newsletter-container">
+			<span class="section-subtitle text-center">Boletín Oficial</span>
+			<h2 class="section-title">Jugando con expedientes y casos</h2>
+			<p class="newsletter-subtitle">Historias que solo vivirán en tu email</p>
+			
+			<div class="dossier-card">
+				<div class="dossier-watermark">CONFIDENCIAL</div>
+				
+				<!-- Mensaje de éxito local -->
+				<div class="dossier-success-msg" id="newsletterSuccess">
+					<div class="typewriter-success">
+						<p class="success-title">> EXPEDIENTE ACTUALIZADO.</p>
+						<p>Sujeto registrado en la base de datos de Álvaro Ayala.</p>
+						<p>Las primeras historias y casos archivados han sido enviados a tu dirección de correo electrónico.</p>
+					</div>
+				</div>
+
+				<!-- Formulario -->
+				<form class="dossier-form" id="newsletterForm">
+					<div class="form-row">
+						<div class="form-group">
+							<label for="newsletterName" class="dossier-label">Nombre del Sujeto</label>
+							<input 
+								type="text" 
+								id="newsletterName" 
+								name="name" 
+								required 
+								placeholder="Ingresa tu nombre..." 
+								class="dossier-input"
+							/>
+						</div>
+						
+						<div class="form-group">
+							<label for="newsletterEmail" class="dossier-label">Dirección de Envío (Email)</label>
+							<input 
+								type="email" 
+								id="newsletterEmail" 
+								name="email" 
+								required 
+								placeholder="ejemplo@correo.com" 
+								class="dossier-input"
+							/>
+						</div>
+					</div>
+
+					<div class="form-group-radio">
+						<span class="dossier-label-question">¿Delitos confesables?</span>
+						<div class="radio-options">
+							<label class="radio-label">
+								<input type="radio" name="delitos" value="si" required class="dossier-radio" />
+								<span class="custom-radio"></span>
+								<span class="radio-text">Sí (Aún no me han atrapado)</span>
+							</label>
+							<label class="radio-label">
+								<input type="radio" name="delitos" value="no" required class="dossier-radio" />
+								<span class="custom-radio"></span>
+								<span class="radio-text">No (Soy inocente, lo juro)</span>
+							</label>
+						</div>
+					</div>
+
+					<button type="submit" class="dossier-submit-btn">
+						Quiero recibirlas
+					</button>
+				</form>
+			</div>
+		</div>
+	</section>
 </Layout>
+
+<script>
+	const form = document.getElementById('newsletterForm') as HTMLFormElement | null;
+	const successMsg = document.getElementById('newsletterSuccess');
+
+	if (form && successMsg) {
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			
+			const formData = new FormData(form);
+			const name = formData.get('name');
+			const email = formData.get('email');
+			const delitos = formData.get('delitos');
+
+			console.log('Newsletter signup attempt:', { name, email, delitos });
+
+			// Oculta el formulario y muestra la confirmación de expediente
+			form.style.display = 'none';
+			if (successMsg) {
+				successMsg.style.display = 'block';
+			}
+		});
+	}
+</script>
 
 <style>
 	/* Hero Section */
@@ -834,5 +929,259 @@ import { libro, autor } from '../data/libro';
 		.large-buy-btn {
 			padding: 1.2rem 2rem;
 		}
+
+		/* Mobile for dossier */
+		.form-row {
+			grid-template-columns: 1fr;
+			gap: 1.2rem;
+		}
+
+		.dossier-card {
+			padding: 1.8rem 1.2rem;
+		}
+
+		.radio-options {
+			flex-direction: column;
+			gap: 0.8rem;
+		}
+	}
+
+	/* Newsletter Section */
+	.newsletter-section {
+		border-top: 1px solid rgba(196, 184, 150, 0.05);
+		background-color: rgba(13, 27, 36, 0.25);
+		position: relative;
+	}
+
+	.newsletter-subtitle {
+		font-family: var(--font-title);
+		font-size: 1.35rem;
+		font-style: italic;
+		color: var(--color-accent);
+		text-align: center;
+		margin-bottom: 2.5rem;
+		margin-top: -1rem;
+	}
+
+	.text-center {
+		text-align: center;
+		display: block;
+	}
+
+	/* Dossier / Folder Card style */
+	.dossier-card {
+		background-color: #11212B; /* Lighter night blue */
+		border: 1px solid rgba(196, 184, 150, 0.15);
+		border-left: 4px solid var(--color-accent);
+		padding: 2.5rem 2.5rem;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+		border-radius: 4px;
+		max-width: 680px;
+		margin: 0 auto;
+	}
+
+	.dossier-watermark {
+		position: absolute;
+		top: 10px;
+		right: 15px;
+		font-family: var(--font-title);
+		font-size: 0.85rem;
+		letter-spacing: 0.25em;
+		color: rgba(196, 184, 150, 0.12);
+		border: 1px solid rgba(196, 184, 150, 0.12);
+		padding: 0.3rem 0.8rem;
+		transform: rotate(4deg);
+		pointer-events: none;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+
+	.dossier-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.8rem;
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.8rem;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.dossier-label {
+		font-family: var(--font-title);
+		font-size: 0.95rem;
+		letter-spacing: 0.1em;
+		color: var(--color-accent);
+		text-transform: uppercase;
+		font-weight: 500;
+	}
+
+	.dossier-input {
+		background-color: rgba(13, 27, 36, 0.6);
+		border: 1px solid rgba(196, 184, 150, 0.2);
+		border-bottom: 2px solid rgba(196, 184, 150, 0.3);
+		color: var(--color-text);
+		padding: 0.75rem 1rem;
+		font-family: var(--font-body);
+		font-size: 1rem;
+		outline: none;
+		transition: all 0.3s ease;
+		border-radius: 2px;
+	}
+
+	.dossier-input:focus {
+		border-color: var(--color-accent);
+		background-color: rgba(13, 27, 36, 0.9);
+		box-shadow: 0 0 10px rgba(196, 184, 150, 0.1);
+	}
+
+	.dossier-input::placeholder {
+		color: rgba(242, 239, 233, 0.3);
+	}
+
+	/* Question and Custom Radio buttons */
+	.form-group-radio {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		padding: 0.3rem 0;
+	}
+
+	.dossier-label-question {
+		font-family: var(--font-title);
+		font-size: 1.1rem;
+		letter-spacing: 0.05em;
+		color: var(--color-text);
+		font-weight: 500;
+	}
+
+	.radio-options {
+		display: flex;
+		gap: 3rem;
+	}
+
+	.radio-label {
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+		cursor: pointer;
+		position: relative;
+		user-select: none;
+	}
+
+	.dossier-radio {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	}
+
+	.custom-radio {
+		height: 20px;
+		width: 20px;
+		background-color: rgba(13, 27, 36, 0.6);
+		border: 1px solid rgba(196, 184, 150, 0.3);
+		border-radius: 50%;
+		display: inline-block;
+		position: relative;
+		transition: all 0.3s ease;
+	}
+
+	.radio-label:hover .custom-radio {
+		border-color: var(--color-accent);
+	}
+
+	.dossier-radio:checked ~ .custom-radio {
+		background-color: var(--color-accent);
+		border-color: var(--color-accent);
+	}
+
+	.custom-radio::after {
+		content: "";
+		position: absolute;
+		display: none;
+		top: 5px;
+		left: 5px;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: #11212B;
+	}
+
+	.dossier-radio:checked ~ .custom-radio::after {
+		display: block;
+	}
+
+	.radio-text {
+		font-size: 1rem;
+		color: var(--color-text-muted);
+		transition: color 0.3s ease;
+	}
+
+	.radio-label:hover .radio-text {
+		color: var(--color-text);
+	}
+
+	.dossier-radio:checked ~ .radio-text {
+		color: var(--color-text);
+		font-weight: 500;
+	}
+
+	/* Submit button */
+	.dossier-submit-btn {
+		font-family: var(--font-title);
+		font-size: 1.15rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--color-bg);
+		background-color: var(--color-accent);
+		border: 1px solid var(--color-accent);
+		padding: 1rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+		text-align: center;
+		margin-top: 0.5rem;
+	}
+
+	.dossier-submit-btn:hover {
+		background-color: transparent;
+		color: var(--color-accent);
+		box-shadow: 0 4px 20px rgba(196, 184, 150, 0.15);
+	}
+
+	/* Success Message styles */
+	.dossier-success-msg {
+		display: none;
+		font-family: Courier, monospace;
+		font-size: 1.05rem;
+		line-height: 1.6;
+		color: var(--color-accent);
+		padding: 1rem 0;
+	}
+
+	.typewriter-success p {
+		margin-bottom: 0.8rem;
+		color: var(--color-accent);
+		border-right: 2px solid transparent;
+		white-space: pre-wrap;
+	}
+
+	.success-title {
+		font-weight: bold;
+		font-size: 1.25rem;
+		letter-spacing: 0.05em;
 	}
 </style>
+

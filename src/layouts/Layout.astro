@@ -296,12 +296,15 @@ const schemaString = JSON.stringify(schemaData);
 
 	/* Header */
 	.site-header {
-		padding: 2rem 2rem;
-		position: absolute;
+		padding: 1.2rem 2rem;
+		position: fixed;
 		top: 0;
 		left: 0;
 		right: 0;
 		z-index: 95;
+		background-color: rgba(13, 27, 36, 0.85);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(196, 184, 150, 0.05);
 	}
 
 	.header-content {
@@ -559,10 +562,6 @@ const schemaString = JSON.stringify(schemaData);
 	@media (max-width: 991px) {
 		.site-header {
 			padding: 1rem 1.5rem;
-			position: fixed;
-			background-color: rgba(13, 27, 36, 0.85);
-			backdrop-filter: blur(12px);
-			border-bottom: 1px solid rgba(196, 184, 150, 0.05);
 			z-index: 98;
 		}
 		

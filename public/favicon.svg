@@ -1,26 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- Fondo azul noche a juego con el tema de la web -->
-  <rect width="32" height="32" rx="8" fill="#0D1B24"/>
-  
+  <!-- Fondo con degradado radial simulando la neblina y luz de la portada -->
   <defs>
-    <linearGradient id="blueLabyrinth" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="100%" stop-color="#0284C7"/>
+    <radialGradient id="mistGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1B3E51"/>
+      <stop offset="70%" stop-color="#0B151C"/>
+      <stop offset="100%" stop-color="#050B10"/>
+    </radialGradient>
+    
+    <!-- Degradado para la silueta retroiluminada -->
+    <linearGradient id="backlight" x1="0" y1="0" x2="0" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#56C1E8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#014A70"/>
     </linearGradient>
   </defs>
 
-  <!-- Anillo exterior del laberinto (Radio 12) -->
-  <circle cx="16" cy="16" r="12" stroke="url(#blueLabyrinth)" stroke-width="1.8" stroke-dasharray="22 6 22 6 15 4" transform="rotate(45 16 16)" />
-  
-  <!-- Anillo intermedio del laberinto (Radio 8) -->
-  <circle cx="16" cy="16" r="8" stroke="url(#blueLabyrinth)" stroke-width="1.8" stroke-dasharray="15 5 15 5 8 2" transform="rotate(-30 16 16)" />
-  
-  <!-- Anillo interno del laberinto (Radio 4) -->
-  <circle cx="16" cy="16" r="4" stroke="url(#blueLabyrinth)" stroke-width="1.8" stroke-dasharray="10 4 8 3" transform="rotate(15 16 16)" />
-  
-  <!-- Silueta/Centro (El centro del laberinto) -->
-  <circle cx="16" cy="16" r="1" fill="url(#blueLabyrinth)" />
-  
-  <!-- Paredes radiales del laberinto -->
-  <path d="M16 4v4M16 24v4M4 16h4M24 16h4M16 12v4M12 16h4" stroke="url(#blueLabyrinth)" stroke-width="1.5" stroke-linecap="round" />
+  <!-- Rectángulo de fondo -->
+  <rect width="32" height="32" rx="8" fill="url(#mistGlow)"/>
+
+  <!-- Silueta de la persona de espaldas -->
+  <path d="M 5,32 C 5,24 9,18 12,17 C 12.5,16 13,15.5 13,14.5 C 11.5,13.5 11,11.5 11,9.5 C 11,6.5 13.2,4.5 16,4.5 C 18.8,4.5 21,6.5 21,9.5 C 21,11.5 20.5,13.5 19,14.5 C 19,15.5 19.5,16 20,17 C 23,18 27,24 27,32 Z" 
+        fill="#080F14" 
+        stroke="url(#backlight)" 
+        stroke-width="1.2" 
+        stroke-linejoin="round"/>
 </svg>

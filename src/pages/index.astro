@@ -12,7 +12,15 @@ import { libro, autor } from '../data/libro';
 		<div class="hero-container">
 			<div class="hero-cover-container">
 				<div class="book-cover-wrapper">
-					<img src="portada.jpg" alt={`Portada de ${libro.titulo}`} class="book-cover-img" />
+					<video 
+						src="video%20paradoja.mp4" 
+						poster="portada.jpg"
+						class="book-cover-video" 
+						autoplay 
+						loop 
+						muted 
+						playsinline
+					></video>
 					<div class="book-cover-glow"></div>
 				</div>
 			</div>
@@ -375,20 +383,21 @@ import { libro, autor } from '../data/libro';
 
 	.book-cover-wrapper {
 		width: 100%;
-		max-width: 330px;
+		max-width: 400px;
 		position: relative;
 		display: inline-block;
 	}
 
-	.book-cover-img {
+	.book-cover-video {
 		width: 100%;
 		height: auto;
 		display: block;
 		object-fit: cover;
-		border-radius: 4px;
-		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5);
+		border-radius: 6px;
+		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5);
 		position: relative;
 		z-index: 2;
+		border: 1px solid rgba(196, 184, 150, 0.15);
 	}
 
 	.book-cover-glow {
@@ -772,7 +781,7 @@ import { libro, autor } from '../data/libro';
 		}
 
 		.book-cover-wrapper {
-			max-width: 230px;
+			max-width: 290px;
 		}
 
 		.hero-actions {

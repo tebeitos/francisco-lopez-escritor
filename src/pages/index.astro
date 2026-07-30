@@ -401,6 +401,17 @@ import { libro, autor } from '../data/libro';
 		border: 1px solid rgba(196, 184, 150, 0.15);
 	}
 
+	/* Oculta controles de reproducción e iconos flotantes nativos del navegador */
+	.book-cover-video::-webkit-media-controls {
+		display: none !important;
+	}
+	.book-cover-video::-webkit-media-controls-start-playback-button {
+		display: none !important;
+	}
+	.book-cover-video::-webkit-media-controls-panel {
+		display: none !important;
+	}
+
 
 
 	.book-cover-glow {

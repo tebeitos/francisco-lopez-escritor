@@ -387,6 +387,10 @@ import { libro, autor } from '../data/libro';
 		max-width: 450px;
 		position: relative;
 		display: inline-block;
+		border-radius: 6px;
+		overflow: hidden;
+		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5);
+		border: 1px solid rgba(196, 184, 150, 0.15);
 	}
 
 	.book-cover-video {
@@ -394,11 +398,10 @@ import { libro, autor } from '../data/libro';
 		height: auto;
 		display: block;
 		object-fit: cover;
-		border-radius: 6px;
-		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5);
 		position: relative;
 		z-index: 2;
-		border: 1px solid rgba(196, 184, 150, 0.15);
+		transform: scale(1.08); /* Zoom de 8% para recortar la marca de agua en los bordes */
+		transform-origin: center;
 	}
 
 	/* Oculta controles de reproducción e iconos flotantes nativos del navegador */

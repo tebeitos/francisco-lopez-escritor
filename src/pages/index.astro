@@ -13,7 +13,6 @@ import { libro, autor } from '../data/libro';
 			<div class="hero-cover-container">
 				<div class="book-cover-wrapper">
 					<video 
-						id="heroVideo"
 						src="video%20paradoja.mp4" 
 						poster="portada.jpg"
 						class="book-cover-video" 
@@ -22,21 +21,6 @@ import { libro, autor } from '../data/libro';
 						muted 
 						playsinline
 					></video>
-					<button class="video-audio-toggle" id="audioToggle" aria-label="Activar sonido del vídeo" title="Activar/desactivar sonido">
-						<span class="sound-icon sound-off">
-							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M11 5L6 9H2v6h4l5 4V5z"></path>
-								<line x1="23" y1="9" x2="17" y2="15"></line>
-								<line x1="17" y1="9" x2="23" y2="15"></line>
-							</svg>
-						</span>
-						<span class="sound-icon sound-on">
-							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M11 5L6 9H2v6h4l5 4V5z"></path>
-								<path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-							</svg>
-						</span>
-					</button>
 					<div class="book-cover-glow"></div>
 				</div>
 			</div>
@@ -273,21 +257,7 @@ import { libro, autor } from '../data/libro';
 		});
 	}
 
-	// Control de volumen / sonido para el vídeo promocional
-	const heroVideo = document.getElementById('heroVideo') as HTMLVideoElement | null;
-	const audioToggle = document.getElementById('audioToggle');
 
-	if (heroVideo && audioToggle) {
-		audioToggle.addEventListener('click', () => {
-			const isMuted = heroVideo.muted;
-			heroVideo.muted = !isMuted;
-			audioToggle.classList.toggle('audio-on', isMuted);
-			
-			if (isMuted) {
-				heroVideo.volume = 0.4; // Volumen moderado por defecto
-			}
-		});
-	}
 </script>
 
 <style>
@@ -432,52 +402,7 @@ import { libro, autor } from '../data/libro';
 		border: 1px solid rgba(196, 184, 150, 0.15);
 	}
 
-	.video-audio-toggle {
-		position: absolute;
-		bottom: 15px;
-		right: 15px;
-		z-index: 5;
-		background: rgba(13, 27, 36, 0.65);
-		backdrop-filter: blur(8px);
-		border: 1px solid rgba(196, 184, 150, 0.3);
-		color: var(--color-accent);
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: all 0.3s ease;
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-		padding: 0;
-	}
 
-	.video-audio-toggle:hover {
-		background: rgba(196, 184, 150, 0.25);
-		border-color: var(--color-accent);
-		color: var(--color-text);
-		transform: scale(1.08);
-	}
-
-	.sound-icon {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		transition: transform 0.2s ease;
-	}
-
-	.sound-on {
-		display: none;
-	}
-
-	.video-audio-toggle.audio-on .sound-off {
-		display: none;
-	}
-
-	.video-audio-toggle.audio-on .sound-on {
-		display: flex;
-	}
 
 	.book-cover-glow {
 		position: absolute;

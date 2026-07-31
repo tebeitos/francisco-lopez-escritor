@@ -401,7 +401,7 @@ import { libro, autor } from '../data/libro';
 		position: relative;
 		z-index: 2;
 		transform: scale(1.08); /* Zoom de 8% para recortar la marca de agua en los bordes */
-		transform-origin: center;
+		transform-origin: center top; /* Alinea al borde superior para evitar recortar texto en la parte superior */
 	}
 
 	/* Oculta controles de reproducción e iconos flotantes nativos del navegador */

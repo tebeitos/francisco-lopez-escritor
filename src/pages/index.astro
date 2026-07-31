@@ -131,12 +131,12 @@ import { libro, autor } from '../data/libro';
 					<div class="review-rating">
 						<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
 					</div>
-					<h3 class="review-title">"Un thriller que engancha desde la primera página"</h3>
+					<h3 class="review-title">"Me ha gustado mucho este libro. Coral e interesante"</h3>
 					<p class="review-content">
-						"Hacía tiempo que no leía una novela policíaca que me atrapara tanto. Álvaro Ayala es un personaje complejo, con sombras que se van descubriendo poco a poco. La trama es impecable, con giros que no te esperas."
+						"Me ha gustado mucho este libro. Es un libro coral con una historia por detrás de cada uno de ellos, que hace el libro muy interesante. Una serie de asesinatos macabros que te mantienen en vilo y no puedes dejar de leer. Deseando saber la siguiente historia que ya se apunta en el epílogo."
 					</p>
 					<div class="review-author-info">
-						<span class="review-author-name">M. Carmen G.</span>
+						<span class="review-author-name">Covadonga G.</span>
 						<span class="review-author-badge">Compra verificada en Amazon</span>
 					</div>
 				</div>
@@ -145,12 +145,12 @@ import { libro, autor } from '../data/libro';
 					<div class="review-rating">
 						<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
 					</div>
-					<h3 class="review-title">"Gran debut. Con ganas de leer el siguiente caso"</h3>
+					<h3 class="review-title">"De lo mejor que he leído últimamente"</h3>
 					<p class="review-content">
-						"Lo que más me ha gustado es cómo el autor explora la mente del inspector Ayala y la relación con su pasado en Gijón. No es el típico detective perfecto; tiene heridas que duelen y eso lo hace muy real."
+						"Hay víctimas, hay policías y, por supuesto, hay culpables, pero... No es eso lo que yo perseguía y ansiaba conocer. ¿Por qué? Porque estaba disfrutando de lo lindo el viaje que proponía el autor. Y es que su maravillosa narrativa, su ironía, su toque de humor negro, y las escenas que iba presentando, se convirtieron en un valioso puzzle que ir montando. Recomendado totalmente."
 					</p>
 					<div class="review-author-info">
-						<span class="review-author-name">Javier S.</span>
+						<span class="review-author-name">Lectora Kindle</span>
 						<span class="review-author-badge">Compra verificada en Amazon</span>
 					</div>
 				</div>
@@ -159,15 +159,25 @@ import { libro, autor } from '../data/libro';
 					<div class="review-rating">
 						<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
 					</div>
-					<h3 class="review-title">"Atmósfera brutal y tensión constante"</h3>
+					<h3 class="review-title">"Invita a sumergirte tanto que quieres volver a analizar"</h3>
 					<p class="review-content">
-						"Una novela con una atmósfera oscura y envolvente. La ambientación está logradísima y el suspense se mantiene hasta el último capítulo. Letras del Alma ha acertado de lleno con esta segunda edición."
+						"Me tomó tiempo leerlo. No por lo largo, sino por lo interesante. Invita a sumergirte tanto en él que hace que quieras volver a analizar páginas anteriores. Me encantó!! Leerlo vale la pena!!"
 					</p>
 					<div class="review-author-info">
-						<span class="review-author-name">Beatriz R.</span>
+						<span class="review-author-name">Paloma</span>
 						<span class="review-author-badge">Compra verificada en Amazon</span>
 					</div>
 				</div>
+			</div>
+
+			<div class="reviews-link-container">
+				<a href={`${libro.enlaceCompra}#customerReviews`} target="_blank" rel="noopener noreferrer" class="reviews-all-link">
+					Leer todas las opiniones en Amazon
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-arrow">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
 			</div>
 		</div>
 	</section>
@@ -875,6 +885,39 @@ import { libro, autor } from '../data/libro';
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		opacity: 0.8;
+	}
+
+	.reviews-link-container {
+		display: flex;
+		justify-content: center;
+		margin-top: 3rem;
+	}
+
+	.reviews-all-link {
+		font-family: var(--font-title);
+		font-size: 1.1rem;
+		font-weight: 500;
+		color: var(--color-accent);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		transition: all 0.3s ease;
+		border-bottom: 1px dashed transparent;
+		padding-bottom: 2px;
+	}
+
+	.reviews-all-link:hover {
+		color: var(--color-text);
+		border-color: var(--color-text);
+	}
+
+	.link-arrow {
+		transition: transform 0.3s ease;
+	}
+
+	.reviews-all-link:hover .link-arrow {
+		transform: translateX(5px);
 	}
 
 	/* Responsive Settings */

@@ -120,6 +120,58 @@ import { libro, autor } from '../data/libro';
 		</div>
 	</section>
 
+	<!-- Section: Opiniones de Lectores -->
+	<section class="reviews-section" id="opiniones">
+		<div class="section-container">
+			<span class="section-subtitle">Lectores</span>
+			<h2 class="section-title">Opiniones de la crítica y lectores</h2>
+			
+			<div class="reviews-grid">
+				<div class="review-card">
+					<div class="review-rating">
+						<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+					</div>
+					<h3 class="review-title">"Un thriller que engancha desde la primera página"</h3>
+					<p class="review-content">
+						"Hacía tiempo que no leía una novela policíaca que me atrapara tanto. Álvaro Ayala es un personaje complejo, con sombras que se van descubriendo poco a poco. La trama es impecable, con giros que no te esperas."
+					</p>
+					<div class="review-author-info">
+						<span class="review-author-name">M. Carmen G.</span>
+						<span class="review-author-badge">Compra verificada en Amazon</span>
+					</div>
+				</div>
+
+				<div class="review-card">
+					<div class="review-rating">
+						<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+					</div>
+					<h3 class="review-title">"Gran debut. Con ganas de leer el siguiente caso"</h3>
+					<p class="review-content">
+						"Lo que más me ha gustado es cómo el autor explora la mente del inspector Ayala y la relación con su pasado en Gijón. No es el típico detective perfecto; tiene heridas que duelen y eso lo hace muy real."
+					</p>
+					<div class="review-author-info">
+						<span class="review-author-name">Javier S.</span>
+						<span class="review-author-badge">Compra verificada en Amazon</span>
+					</div>
+				</div>
+
+				<div class="review-card">
+					<div class="review-rating">
+						<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+					</div>
+					<h3 class="review-title">"Atmósfera brutal y tensión constante"</h3>
+					<p class="review-content">
+						"Una novela con una atmósfera oscura y envolvente. La ambientación está logradísima y el suspense se mantiene hasta el último capítulo. Letras del Alma ha acertado de lleno con esta segunda edición."
+					</p>
+					<div class="review-author-info">
+						<span class="review-author-name">Beatriz R.</span>
+						<span class="review-author-badge">Compra verificada en Amazon</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- Sobre el autor Section -->
 	<section class="author-section" id="autor">
 		<div class="section-container">
@@ -727,6 +779,104 @@ import { libro, autor } from '../data/libro';
 		transition: stroke 0.3s ease;
 	}
 
+	/* Reviews Section */
+	.reviews-section {
+		background-color: var(--color-bg);
+		position: relative;
+		border-top: 1px solid rgba(196, 184, 150, 0.1);
+	}
+
+	.reviews-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+		margin-top: 3.5rem;
+	}
+
+	.review-card {
+		background-color: #11212B; /* Matches night blue theme */
+		border: 1px solid rgba(196, 184, 150, 0.1);
+		padding: 2.2rem 1.8rem;
+		border-radius: 4px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		transition: all 0.3s ease;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+		position: relative;
+	}
+
+	.review-card::before {
+		content: '"';
+		position: absolute;
+		top: 15px;
+		right: 25px;
+		font-family: var(--font-title);
+		font-size: 5rem;
+		color: rgba(196, 184, 150, 0.05);
+		line-height: 1;
+		font-weight: 900;
+	}
+
+	.review-card:hover {
+		transform: translateY(-8px);
+		border-color: rgba(196, 184, 150, 0.3);
+		box-shadow: 0 15px 40px rgba(196, 184, 150, 0.08);
+	}
+
+	.review-rating {
+		display: flex;
+		gap: 0.2rem;
+		margin-bottom: 1.2rem;
+	}
+
+	.star {
+		color: var(--color-accent);
+		font-size: 1.2rem;
+	}
+
+	.review-title {
+		font-family: var(--font-title);
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: var(--color-text);
+		margin-bottom: 1rem;
+		line-height: 1.4;
+	}
+
+	.review-content {
+		font-family: var(--font-body);
+		font-size: 1.02rem;
+		line-height: 1.7;
+		color: var(--color-text-muted);
+		margin-bottom: 1.8rem;
+		flex-grow: 1;
+	}
+
+	.review-author-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+		border-top: 1px solid rgba(196, 184, 150, 0.1);
+		padding-top: 1.2rem;
+	}
+
+	.review-author-name {
+		font-family: var(--font-title);
+		font-size: 1.05rem;
+		color: var(--color-text);
+		font-weight: 500;
+	}
+
+	.review-author-badge {
+		font-family: var(--font-body);
+		font-size: 0.8rem;
+		color: var(--color-accent);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		opacity: 0.8;
+	}
+
 	/* Responsive Settings */
 	@media (max-width: 1024px) {
 		.hero-container {
@@ -817,6 +967,11 @@ import { libro, autor } from '../data/libro';
 			padding: 1.2rem 2rem;
 		}
 
+		.reviews-grid {
+			grid-template-columns: 1fr;
+			gap: 1.8rem;
+			margin-top: 2.5rem;
+		}
 
 	}
 

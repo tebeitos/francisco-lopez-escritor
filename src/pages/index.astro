@@ -271,6 +271,20 @@ import { libro, autor } from '../data/libro';
 						Quiero recibirlo
 					</button>
 				</form>
+
+				<div class="substack-bloque">
+					<p class="substack-texto">
+						¿Prefieres leer los expedientes directamente en Substack?
+					</p>
+					<a 
+						href="#"
+						target="_blank" 
+						rel="noopener noreferrer"
+						class="substack-boton"
+					>
+						→ Suscríbete en La Comisaría de Embajadores
+					</a>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -1262,6 +1276,36 @@ import { libro, autor } from '../data/libro';
 		font-weight: bold;
 		font-size: 1.25rem;
 		letter-spacing: 0.05em;
+	}
+
+	.substack-bloque {
+		margin-top: 2rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid rgba(196, 184, 150, 0.2);
+		text-align: center;
+	}
+
+	.substack-texto {
+		font-size: 0.85rem;
+		color: #a89f8c;
+		letter-spacing: 0.05em;
+		margin-bottom: 0.75rem;
+	}
+
+	.substack-boton {
+		display: inline-block;
+		padding: 0.75rem 2rem;
+		font-size: 0.85rem;
+		color: #0d1b2a;
+		background-color: #C4B896;
+		text-decoration: none;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		transition: opacity 0.2s;
+	}
+
+	.substack-boton:hover {
+		opacity: 0.85;
 	}
 
 	/* Desktop overrides for dossier card */

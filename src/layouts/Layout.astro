@@ -107,6 +107,27 @@ const schemaString = JSON.stringify(schemaData);
 		
 		<!-- Structured Data (JSON-LD) -->
 		<script type="application/ld+json" set:html={schemaString}></script>
+
+		<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "Book",
+		  "name": "La Paradoja",
+		  "author": {
+		    "@type": "Person",
+		    "name": "Francisco M. López Martínez"
+		  },
+		  "publisher": {
+		    "@type": "Organization",
+		    "name": "Letras del Alma Ediciones"
+		  },
+		  "genre": "Novela negra",
+		  "inLanguage": "es",
+		  "numberOfPages": "",
+		  "url": "https://www.laparadojanovela.es",
+		  "sameAs": "https://www.amazon.es/dp/8409772949"
+		}
+		</script>
 	</head>
 	<body>
 		<!-- Soft background elements simulating mist and mysterious depth -->

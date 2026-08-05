@@ -244,14 +244,24 @@ import { libro, autor } from '../data/libro';
 			<p class="contact-text">
 				Sigue de cerca las novedades de Álvaro Ayala y futuras publicaciones compartiendo el día a día con el autor.
 			</p>
-			<a href={autor.instagram} target="_blank" rel="noopener noreferrer" class="instagram-button">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ig-icon">
-					<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-					<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-					<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-				</svg>
-				<span>@franciscomlopez.escritor</span>
-			</a>
+			<div class="contact-buttons">
+				<a href={autor.instagram} target="_blank" rel="noopener noreferrer" class="instagram-button">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ig-icon">
+						<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+						<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+						<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+					</svg>
+					<span>@franciscomlopez.escritor</span>
+				</a>
+
+				<a href="mailto:francisco@laparadojanovela.es" class="email-button">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mail-icon">
+						<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+						<polyline points="22,6 12,13 2,6"></polyline>
+					</svg>
+					<span>francisco@laparadojanovela.es</span>
+				</a>
+			</div>
 		</div>
 	</section>
 </Layout>
@@ -701,28 +711,39 @@ import { libro, autor } from '../data/libro';
 		margin: 0 auto 1.2rem;
 	}
 
-	.instagram-button {
+	.contact-buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		margin-top: 1.8rem;
+	}
+
+	.instagram-button, .email-button {
 		display: inline-flex;
 		align-items: center;
+		justify-content: center;
 		gap: 0.8rem;
 		font-family: var(--font-title);
-		font-size: 1.25rem;
+		font-size: 1.2rem;
 		color: var(--color-accent);
 		border: 1px solid rgba(196, 184, 150, 0.3);
 		padding: 0.9rem 2.2rem;
 		background-color: rgba(27, 58, 75, 0.15);
 		transition: all 0.3s ease;
 		letter-spacing: 0.05em;
+		width: 100%;
+		max-width: 380px;
 	}
 
-	.instagram-button:hover {
+	.instagram-button:hover, .email-button:hover {
 		background-color: var(--color-accent);
 		color: var(--color-bg);
 		border-color: var(--color-accent);
 		box-shadow: 0 5px 20px rgba(196, 184, 150, 0.2);
 	}
 
-	.ig-icon {
+	.ig-icon, .mail-icon {
 		transition: stroke 0.3s ease;
 	}
 
